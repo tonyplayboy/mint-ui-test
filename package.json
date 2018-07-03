@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --open --port 3001 --hot"
+    "dev": "webpack-dev-server --port 3001 --hot"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "lodash.assign": "^4.2.0",
     "mint-ui": "^2.2.9",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"

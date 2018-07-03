@@ -6,7 +6,8 @@ import VueRouter from 'vue-router'
 var router = new VueRouter({
   routes: [
 
-  ]
+  ],
+    linkActiveClass:'mui-active'
 })
 
 // 把路由对象暴露出去
