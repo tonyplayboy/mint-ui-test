@@ -3,6 +3,11 @@
     <!-- 顶部 Header 区域 -->
     <mt-header fixed title="购物项目"></mt-header>
     <!--中间-->
+
+    <transition>
+      <router-view></router-view>
+    </transition>
+
     <!-- 底部 Tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
       <router-link class="mui-tab-item" to="/home">
@@ -36,5 +41,21 @@
 <style lang="scss" scoped>
   .app-container{
     padding-top: 40px;
+    /*取消滚动条*/
+    overflow-x: hidden;
+  }
+
+  .v-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .v-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
+    position: absolute;
+  }
+  .v-enter-active,
+  .v-leave-active {
+    transition: all 0.5s ease;
   }
 </style>
