@@ -2,11 +2,11 @@
 
 ## 牛不牛逼， 用心去感受，每一行代码中的诗情雅意
 
-##Vue项目前端工程
+## Vue项目前端工程
 
-##技术栈:Vue + express + webpack + node.js(后台)
+## 技术栈:Vue + express + webpack + node.js(后台)
 
-##运行方法:
+## 运行方法:
 
 ##1下载node.js并安装,
 
