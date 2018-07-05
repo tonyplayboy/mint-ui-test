@@ -14,7 +14,7 @@
             </li>
         </ul>
         <p>{{ newsInfo.zhaoyao}}</p>
-        <comment-box :id="this.id"></comment-box>
+        <cmt-box :id="id"></cmt-box>
     </div>
 </template>
 
@@ -47,7 +47,7 @@
             }
         },
         components:{ //子组件
-            'comment-box' :comment
+            'cmt-box' :comment
         }
     };
 </script>

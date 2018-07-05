@@ -2,9 +2,9 @@
     <div class="cmt-container">
         <h3>发表评论</h3>
         <hr>
-        <textarea placeholder="请输入要评论的内容（最多120字）" maxlength="120"></textarea>
+        <textarea placeholder="请输入要评论的内容（最多120字）" maxlength="120" v-model="content"></textarea>
 
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <mt-button type="primary" size="large" @click="addComment">发表评论</mt-button>
 
         <div class="cmt-list">
             <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
@@ -30,7 +30,8 @@
         data() {
             return {
                 pageIndex:1,
-                comments:[]
+                comments:[],
+                content:''
             }
         },
         props:['id'],
@@ -39,7 +40,6 @@
         },
         methods: {
             getComments() {
-                // 获取轮播图数据的方法
                 this.$http.get("getcomments/" + this.id + "/" + this.pageIndex)
                     .then(result => {
                         //console.log(result.body);
@@ -53,6 +53,29 @@
             getMore() {
                 this.pageIndex++;
                 this.getComments()
+            },
+            addComment() {
+                if(this.content.trim().length === 0) {
+                    Toast("请输入评论内容。。。");
+                    return;
+                }
+                //console.log(new Date('YYYY-MM-DD HH:mm:ss'));
+                var newComment = {
+                    user_name:'匿名用户',
+                    add_time:Date.now(),
+                    content:this.content.trim(),
+                    news_id:this.$route.params.id
+                }
+                this.$http.post("addcomment/" ,newComment)
+                    .then(result => {
+                        console.log(result.body);
+                        if (result.body.affectedRows === 1) {
+                            this.comments.unshift(newComment);
+                            this.content = '';
+                        } else {
+                            Toast("加载评论失败。。。");
+                        }
+                    })
             }
         }
     };
