@@ -1,11 +1,8 @@
 <template>
   <div>
-      <mt-swipe :auto="2000">
-          <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
-              <img :src="item.img" alt="">
-          </mt-swipe-item>
-
-      </mt-swipe>
+      <!--轮播图-->
+      <swiper :lunbotuList="lunbotuList">
+      </swiper>
       <!--六宫格-->
       <ul class="mui-table-view mui-grid-view mui-grid-9">
           <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><router-link to="/home/newsList">
@@ -34,12 +31,15 @@
 
 <script>
     import {Toast} from 'mint-ui'
-
+    import swiper from "../subcomponents/swiper.vue";
     export  default {
         data() {
             return {
                 lunbotuList:[]
             }
+        },
+        components: {
+            swiper
         },
         created() {
             this.getLunbotu()
@@ -62,34 +62,21 @@
 </script>
 
 <style lang="scss" scoped>
-    .mint-swipe{
-        height: 200px;
-    }
-    .mint-swipe-item{
-        &:nth-child(1) {
-            background-color: red;
-         }
-        &:nth-child(2) {
-            background-color: blue;
-         }
-        &:nth-child(3) {
-            background-color: green;
-         }
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
     .mui-grid-view.mui-grid-9 {
         background-color: #fff;
         border: none;
-        li {
-            border: none;
-            img{
-                width: 50%;
-                height: 50%;
-            }
+        img {
+            width: 60px;
+            height: 60px;
         }
+
+        .mui-media-body {
+            font-size: 13px;
+        }
+    }
+
+    .mui-grid-view.mui-grid-9 .mui-table-view-cell {
+        border: 0;
     }
 </style>
 
