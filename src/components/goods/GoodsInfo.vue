@@ -123,6 +123,17 @@ export default {
     addToShopCar() {
       // 添加到购物车
       this.ballFlag = !this.ballFlag;
+      var goodsinfo = {
+          id: parseInt(this.id),
+          count: this.selectedCount,
+          sell_price: this.goodsinfo.sell_price,
+          selected: true,
+          thumb_path:this.goodsinfo.img_url,
+          title:this.goodsinfo.title,
+          stock_quantity:this.stock_quantity
+      };
+      // 调用 store 中的 mutations 来将商品加入购物车
+      this.$store.commit("addToCart", goodsinfo);
     },
     getSelectedCount(count) {
         // 当子组件把 选中的数量传递给父组件的时候，把选中的值保存到 data 上

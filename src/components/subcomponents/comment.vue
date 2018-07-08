@@ -68,7 +68,6 @@
                 }
                 this.$http.post("addcomment/" ,newComment)
                     .then(result => {
-                        console.log(result.body);
                         if (result.body.affectedRows === 1) {
                             this.comments.unshift(newComment);
                             this.content = '';
